@@ -8,14 +8,25 @@
   become_method: sudo
   tasks:
   
-    - name: Add Apt Keys
+    - name: Add apt keys Spotify
       apt_key:
         keyserver: hkp://keyserver.ubuntu.com:80
         id: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
         state: present  
         
+    - name: Add apt keys chrome
+      apt_key: 
+        url: https://dl.google.com/linux/linux_signing_key.pub             
+        state: present
+        
+        
     - name: Add Apt Repositories    
-      apt_repository: repo='deb http://repository.spotify.com stable non-free'
+      apt_repository: 
+        repo: "{{ item }}"
+        
+      with_items:  
+        - deb http://repository.spotify.com stable non-free
+        - deb http://dl.google.com/linux/chrome/deb/ stable main
   
   
     - name: Gnome Classsic
@@ -55,7 +66,7 @@
         - nfs-common 
         - nfs-kernel-server         
         
-    - name: Multimedia
+    - name: Aplicaciones
       apt:
         name: "{{ item }}"
         state: latest   
@@ -65,6 +76,7 @@
         - mediainfo 
         - vlc
         - spotify-client
+        - google-chrome-stable 
         - deluge
         - deluged
         
