@@ -1,0 +1,19 @@
+---
+- hosts: all
+  vars:
+    user: pato
+    group: pato
+  become: true
+  become_user: root
+  become_method: sudo
+    
+  roles: 
+    - {role: packages}  
+    - {role: manual}
+    - {role: gnome.classic}
+    - {role: spotify}  
+    - {role: chrome}  
+    - {role: google-drive-ocamlfuse}  
+    - {role: malk.java8-oracle}  
+    - {role: powerline}  
+    - {role: bash}  

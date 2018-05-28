@@ -1,0 +1,31 @@
+---
+- name: add apt keys
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: 0DF731E45CE24F27EEEB1450EFDC8610341D9410
+    state: present  
+
+- name: add repository 
+  apt_repository: 
+    repo: "deb http://repository.spotify.com stable non-free"
+    
+- name: package 
+  apt: 
+    name: spotify-client
+    update_cache: yes
+    cache_valid_time: 3600      
+    state: latest
+
+    #- name: Aplicaciones
+      #apt:
+        #name: "{{ item }}"
+        #state: latest   
+        #update_cache: yes
+        #cache_valid_time: 3600
+      #with_items:  
+        #- mediainfo 
+        #- vlc
+        #- spotify-client
+        #- google-chrome-stable 
+        #- deluge
+        #- deluged

@@ -1,0 +1,8 @@
+---
+- name: packages
+  shell: echo "Instalar a mano {{ item }}"
+  with_items:  
+    - phpstorm
+    - gitkraken
+    - tinyMediaManager
+

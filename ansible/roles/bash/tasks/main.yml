@@ -1,0 +1,31 @@
+---
+- name: edit bashrc file
+  blockinfile:
+    path: "{{ ansible_env.HOME }}/.bashrc"
+    block: |
+      if [ -f ~/.bash_custom ]; then
+        . ~/.bash_custom
+      fi
+
+- name: bug tilix
+  file:
+    src: /etc/profile.d/vte-2.91.sh
+    dest: /etc/profile.d/vte.sh
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    state: link
+
+- name: template aliases
+  template:
+    src: "./templates/aliases.j2"
+    dest: "{{ ansible_env.HOME }}/.bash_aliases"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: template custom
+  template:
+    src: "./templates/custom.j2"
+    dest: "{{ ansible_env.HOME }}/.bash_custom"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
