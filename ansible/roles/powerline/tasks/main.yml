@@ -1,16 +1,20 @@
 ---
-- name: packages
+- name: fonts
   apt:
-    name: "{{ item }}"
-    state: latest   
+    name: "fonts-powerline"
+    state: latest
     update_cache: yes
     cache_valid_time: 3600
-  with_items:  
-    - powerline 
-    - python3-powerline
-    - fonts-powerline
 
-- name: config
-  git:
-    repo: "https://github.com/adidenko/powerline.git"
-    dest: "{{ ansible_env.HOME }}/.config/powerline"
+- name: powerline shell
+  pip:
+    name: "powerline-shell"
+
+
+- name: powerline shell config
+  template:
+    src: "./templates/powerline-shell.json.j2"
+    dest: "{{ ansible_env.HOME }}/.powerline-shell.json"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    force: no

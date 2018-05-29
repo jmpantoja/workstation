@@ -21,6 +21,7 @@
     dest: "{{ ansible_env.HOME }}/.bash_aliases"
     owner: "{{ user }}"
     group: "{{ user }}"
+    force: no
 
 - name: template custom
   template:
@@ -28,4 +29,5 @@
     dest: "{{ ansible_env.HOME }}/.bash_custom"
     owner: "{{ user }}"
     group: "{{ user }}"
+    force: no
 
