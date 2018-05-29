@@ -1,0 +1,38 @@
+---
+- name: role bash
+  import_role:
+    name: bash
+
+- name: fonts
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - gir1.2-nautilus-3.0
+    - libgtkd-3-0
+    - libvted-3-0
+    - python-gi
+    - python-nautilus
+    - tilix
+    - tilix-common
+
+
+
+- name: bugfix
+  file:
+    src: /etc/profile.d/vte-2.91.sh
+    dest: /etc/profile.d/vte.sh
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    state: link
+
+- name: edit bashrc file
+  blockinfile:
+    marker: "# {mark} TILIX BUGFIX"
+    path: "{{ ansible_env.HOME }}/.bash_custom"
+    block: |
+      if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+            source /etc/profile.d/vte.sh
+      fi

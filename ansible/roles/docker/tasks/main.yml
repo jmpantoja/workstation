@@ -1,4 +1,8 @@
 ---
+- name: role bash
+  import_role:
+    name: bash
+
 - name: apt_key
   apt_key:
     url: "https://download.docker.com/linux/ubuntu/gpg"
@@ -23,4 +27,4 @@
     - docker-ce
 
 - name: add user
-  command: sudo usermod -aG docker {{ user }}
+  command: usermod -aG docker {{ user }}

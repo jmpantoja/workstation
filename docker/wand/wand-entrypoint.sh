@@ -1,0 +1,1 @@
+exec "/app/vendor/bin/phpspec $@"

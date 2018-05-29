@@ -18,3 +18,18 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     force: no
+
+
+- name: edit bashrc file
+  blockinfile:
+    marker: "# {mark} POWERLINE SHELL"
+    path: "{{ ansible_env.HOME }}/.bash_custom"
+    block: |
+      function _update_ps1() {
+          PS1=$(powerline-shell $?)
+      }
+
+      if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+          PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+      fi
+

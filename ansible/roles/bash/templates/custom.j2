@@ -1,8 +1,4 @@
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
-
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
@@ -11,12 +7,3 @@ HISTCONTROL='ignorespace:ignoredups:erasedups'
 HISTSIZE=1000
 HISTFILESIZE=3000
 HISTTIMEFORMAT='[%F %T]  '
-
-
-function _update_ps1() {
-    PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi

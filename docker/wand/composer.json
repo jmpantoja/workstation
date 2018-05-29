@@ -1,0 +1,11 @@
+{
+  "require": {
+    "planb/utils": "dev-wand",
+    "planb/wand": "dev-develop"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "apcu-autoloader": true
+  }
+}
