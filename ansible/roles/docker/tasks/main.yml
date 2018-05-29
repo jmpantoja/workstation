@@ -1,0 +1,26 @@
+---
+- name: apt_key
+  apt_key:
+    url: "https://download.docker.com/linux/ubuntu/gpg"
+    state: present
+
+- name: add repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu artful stable"
+
+- name: package
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: latest
+
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - software-properties-common
+    - docker-ce
+
+- name: add user
+  command: sudo usermod -aG docker {{ user }}
