@@ -3,6 +3,10 @@
   import_role:
     name: bash
 
+- name: role packages
+  import_role:
+    name: packages
+
 - name: apt_key
   apt_key:
     url: "https://download.docker.com/linux/ubuntu/gpg"
@@ -12,7 +16,7 @@
   apt_repository:
     repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu artful stable"
 
-- name: package
+- name: packages
   apt:
     name: "{{ item }}"
     update_cache: yes
@@ -26,5 +30,21 @@
     - software-properties-common
     - docker-ce
 
+
 - name: add user
   command: usermod -aG docker {{ user }}
+
+
+
+- name: docker-compose
+  command: usermod -aG docker {{ user }}
+
+#
+#
+#- name: Installing dependencies
+#  easy_install:
+#    name: pip
+
+- name: Installing docker compose
+  pip:
+    name: docker-compose
