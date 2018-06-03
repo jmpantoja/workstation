@@ -1,0 +1,25 @@
+---
+- name: add repository 
+  apt_repository: 
+    repo: "ppa:webupd8team/atom"
+
+- name: package 
+  apt: 
+    name: atom
+    update_cache: yes
+    cache_valid_time: 3600      
+    state: latest
+
+    #- name: Aplicaciones
+      #apt:
+        #name: "{{ item }}"
+        #state: latest   
+        #update_cache: yes
+        #cache_valid_time: 3600
+      #with_items:  
+        #- mediainfo 
+        #- vlc
+        #- spotify-client
+        #- google-chrome-stable 
+        #- deluge
+        #- deluged

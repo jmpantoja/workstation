@@ -20,4 +20,5 @@
     - {role: docker}
     - {role: powerline}
     - {role: php}
+    - {role: atom}
 
