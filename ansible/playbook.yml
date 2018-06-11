@@ -13,7 +13,6 @@
     - {role: gnome.classic}
     - {role: spotify}
     - {role: chrome}
-    - {role: google-drive-ocamlfuse}
     - {role: malk.java8-oracle}
     - {role: bash}
     - {role: tilix}
@@ -21,4 +20,5 @@
     - {role: powerline}
     - {role: php}
     - {role: atom}
+    - {role: virtualbox}
 

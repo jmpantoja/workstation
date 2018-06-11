@@ -1,7 +1,7 @@
 ---
-- name: add repository 
-  apt_repository: 
-    repo: "ppa:webupd8team/atom"
+#- name: add repository
+#  apt_repository:
+#    repo: "ppa:webupd8team/atom"
 
 - name: package 
   apt: 

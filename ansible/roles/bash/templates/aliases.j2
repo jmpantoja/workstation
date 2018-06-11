@@ -1,2 +1,2 @@
 alias osmc='sshfs osmc@osmc:/media/Ext01 /mnt/ext01/ '
-alias grive='google-drive-ocamlfuse mountpoint /mnt/data/grive/ '
+alias grive='docker run --rm -it -v $(pwd):/drive -u $(id -u):$(id -g) paulwoelfel/grive2'

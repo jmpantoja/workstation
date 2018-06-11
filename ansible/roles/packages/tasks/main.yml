@@ -8,6 +8,7 @@
   with_items:  
     - mediainfo 
     - vlc
+    - gnome-mpv
     - deluge
     - deluged
 
@@ -29,3 +30,7 @@
 
     - python-pip
     - python-setuptools
+
+    - unrar
+    - rar
+    - zip

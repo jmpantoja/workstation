@@ -1,0 +1,13 @@
+---
+- name: package 
+  apt: 
+    name: "{{ item }}"
+    update_cache: yes
+    cache_valid_time: 3600      
+    state: latest
+
+  with_items:
+     - virtualbox
+     - virtualbox-ext-pack
+#     - vagrant # isntalar la ultima version  a mano  https://www.vagrantup.com/downloads.html
+#     - vagrant plugin install vagrant-digitalocean
