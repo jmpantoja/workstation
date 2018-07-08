@@ -25,4 +25,4 @@ localhost ansible_connection=local
 1. `git clone https://github.com/jmpantoja/workstation.git .`
 1. `cd workstation` 
 1. `ansible-galaxy install -r ansible/requirements`
-1. `sudo ansible-playbook ansible/playbook.yml`
+1. `sudo ansible-playbook ansible/playbook.yml --connection=local`

@@ -1,0 +1,18 @@
+---
+- name: Add packagecloud apt key.
+  apt_key:
+    url: "https://packagecloud.io/gpg.key"
+    state: present
+
+- name: Add packagecloud repository.
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  register: packagecloud_repos
+  with_items:
+    - "deb http://packages.blackfire.io/debian any main"
+
+- name: Ensure Blackfire packages are installed.
+  package:
+    name: blackfire-agent
+    state: present

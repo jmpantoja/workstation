@@ -21,4 +21,5 @@
     - {role: php}
     - {role: atom}
     - {role: virtualbox}
+    - {role: blackfire-client, tags: ['blackfire']}
 

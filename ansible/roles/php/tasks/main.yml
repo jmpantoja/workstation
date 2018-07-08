@@ -18,8 +18,12 @@
     - php7.2-json
     - php7.2-opcache
     - php7.2-xml
+    - php7.2-zip
     - php7.2-mbstring
+    - php-xdebug
     - php-apcu
+    - build-essential
+    - php7.0-dev
 
 - name: composer
   import_role:
