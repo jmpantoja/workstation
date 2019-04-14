@@ -12,7 +12,7 @@
     - {role: manual}
     - {role: gnome.classic}
     - {role: spotify}
-    - {role: chrome}
+#    - {role: chrome}
     - {role: malk.java8-oracle}
     - {role: bash}
     - {role: tilix}

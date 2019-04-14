@@ -5,11 +5,7 @@
 
 - name: fonts
   apt:
-    name: "{{ item }}"
-    state: latest
-    update_cache: yes
-    cache_valid_time: 3600
-  with_items:
+    name: 
     - gir1.2-nautilus-3.0
     - libgtkd-3-0
     - libvted-3-0
@@ -17,6 +13,10 @@
     - python-nautilus
     - tilix
     - tilix-common
+    
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
 
 
 

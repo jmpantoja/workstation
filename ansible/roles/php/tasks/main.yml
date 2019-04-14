@@ -5,11 +5,7 @@
 
 - name: php  7.2
   apt:
-    name: "{{ item }}"
-    state: latest
-    update_cache: yes
-    cache_valid_time: 3600
-  with_items:
+    name: 
     - php7.2-cli
     - libpcre3-dev
     - php7.2-gd
@@ -23,7 +19,11 @@
     - php-xdebug
     - php-apcu
     - build-essential
-    - php7.0-dev
+    - php7.2-dev    
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+
 
 - name: composer
   import_role:
@@ -38,12 +38,8 @@
     marker: "# {mark} COMPOSER SHELL"
     path: "{{ ansible_env.HOME }}/.bash_custom"
     block: |
-      export PATH=$PATH:~/.composer/vendor/bin
+      export COMPOSER_HOME=$HOME/.composer
+      export COMPOSER_CACHE_DIR=$COMPOSER_HOME/cache
+      export PATH=$PATH:$COMPOSER_HOME/vendor/bin
+      
 
-#      function _update_ps1() {
-#          PS1=$(powerline-shell $?)
-#      }
-#
-#      if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-#          PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-#      fi
